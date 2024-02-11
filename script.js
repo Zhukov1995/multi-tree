@@ -126,14 +126,18 @@ servicesTree.appendChild(htmlTree);
 
 for (let li of servicesTree.querySelectorAll("li")) {
     let span = document.createElement("span");
-    span.classList.add("show");
+    span.classList.add("hide");
     li.prepend(span);
     span.append(span.nextSibling);
 }
 
+document.querySelectorAll('ul').forEach((item, index) => {
+    if (index !== 0) item.hidden = true
+})
+
 servicesTree.onclick = function (event) {
     if (event.target.tagName != "SPAN") return;
-    console.log(event)
+
     let childrenList = event.target.parentNode.querySelector("ul");
     if (!childrenList) return;
     childrenList.hidden = !childrenList.hidden;
