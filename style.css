@@ -4,6 +4,8 @@ ul {
     margin: 0;
     margin-left: 15px;
     font-family: Arial;
+    line-height: 20px;
+    color: #4f5258;
 }
 
 
@@ -12,9 +14,14 @@ ul {
 }
 
 .parent > .hide::before {
-  content: "+ ";
+  content: url('./arrow.svg');
+  margin-right: 5px;
+  
 }
 
 .parent > .show::before {
-  content: "- ";
+  content: url('./arrow.svg');
+  display: inline-block;
+  transform: rotate(90deg);
+  margin-right: 5px;
 }

@@ -91,7 +91,6 @@ function buildTree(items, parent) {
             result.push(item);
             item.children = buildTree(items, item.id);
             item.children.sort((a, b) => a.sorthead - b.sorthead);
-
             if (!item.children.length) {
                 delete item.children;
             }
@@ -109,7 +108,6 @@ function createHtmlList(tree) {
         li.textContent = node.name;
         if (node.children) {
             li.classList.add('parent')
-            console.log(createHtmlList(node.children));
             li.appendChild(createHtmlList(node.children));
         } else {
             li.textContent = `${node.name}: ${node.price}`;
@@ -135,7 +133,7 @@ for (let li of servicesTree.querySelectorAll("li")) {
 
 servicesTree.onclick = function (event) {
     if (event.target.tagName != "SPAN") return;
-
+    console.log(event)
     let childrenList = event.target.parentNode.querySelector("ul");
     if (!childrenList) return;
     childrenList.hidden = !childrenList.hidden;
